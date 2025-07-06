@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Beautiful! 🎉</title>
+    <style>
+        /* :root {
+            --primary-color: #ff6b9d;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --background-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fccb90 100%);
+            --text-light: #ffffff;
+            --text-dark: #2c3e50;
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.2);
+        } 
+        */
+
+        /* Alternative themes - uncomment the one you want */
+        
+        /* ROMANTIC PINK THEME */
+        
+        :root {
+            --primary-color: #ff69b4;
+            --secondary-color: #ff1493;
+            --accent-color: #ffc0cb;
+            --background-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fad0c4 100%);
+            --text-light: #0e0c0c;
+            --text-dark: #2c3e50;
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.2);
+        }
+       
+
+        /* PURPLE DREAMS THEME */
+        /*
+        :root {
+            --primary-color: #8b5cf6;
+            --secondary-color: #a78bfa;
+            --accent-color: #c084fc;
+            --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --text-light: #ffffff;
+            --text-dark: #2c3e50;
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.2);
+        }
+        */
+
+        /* OCEAN BLUE THEME */
+        /*
+        :root {
+            --primary-color: #06b6d4;
+            --secondary-color: #0891b2;
+            --accent-color: #67e8f9;
+            --background-gradient: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #a29bfe 100%);
+            --text-light: #ffffff;
+            --text-dark: #2c3e50;
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.2);
+        }
+        */
+
+        /* GOLDEN SUNSET THEME */
+        /*
+        :root {
+            --primary-color: #f59e0b;
+            --secondary-color: #d97706;
+            --accent-color: #fbbf24;
+            --background-gradient: linear-gradient(135deg, #fdcb6e 0%, #e17055 50%, #fd79a8 100%);
+            --text-light: #ffffff;
+            --text-dark: #2c3e50;
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.2);
+        }
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--background-gradient);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Landing celebration overlay */
+        .celebration-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeOut 1s ease-out 4s forwards;
+        }
+
+        .celebration-text {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            animation: celebrationGlow 1s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+        }
+
+        .celebration-subtitle {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: white;
+            text-align: center;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        /* Floating particles animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Confetti pieces */
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .balloon {
+            position: fixed;
+            font-size: 3rem;
+            z-index: 9998;
+            pointer-events: none;
+            animation: balloonFloat 10s ease-in-out infinite;
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header section */
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            animation: fadeInDown 1.5s ease-out 5s both;
+        }
+
+        .main-title {
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            margin-bottom: 30px;
+            opacity: 0.9;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Glass morphism cards */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            animation: fadeInUp 1.5s ease-out 5.5s both;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Large image container */
+        .image-container {
+            text-align: center;
+            margin: 50px 0;
+            animation: fadeInUp 1.5s ease-out 6s both;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--primary-color);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            animation: pulse 3s infinite;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Message sections */
+        .message-section {
+            margin: 40px 0;
+        }
+
+        .message-title {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .message-text {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            text-align: center;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Interactive elements */
+        .interactive-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .love-button {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        .love-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .love-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Heart animation */
+        .heart {
+            display: inline-block;
+            color: var(--primary-color);
+            font-size: 3rem;
+            animation: heartbeat 2s ease-in-out infinite;
+            margin: 0 15px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 25px;
+                margin: 25px 0;
+            }
+            
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .love-button {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+                margin: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 30px rgba(255, 107, 157, 0.5); }
+            to { text-shadow: 0 0 50px rgba(255, 107, 157, 0.8); }
+        }
+
+        @keyframes celebrationGlow {
+            from { text-shadow: 0 0 40px rgba(255, 107, 157, 0.8); }
+            to { text-shadow: 0 0 60px rgba(255, 107, 157, 1), 0 0 80px rgba(78, 205, 196, 0.8); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
+            75% { transform: scale(1.1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.8; }
+        }
+
+        @keyframes balloonFloat {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes firework-explosion {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(25);
+                opacity: 0;
+            }
+        }
+
+        @keyframes surprisePopup {
+            0% {
+                transform: translate(-50%, -50%) scale(0.3);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .firework::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            animation: firework-explosion 1.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Celebration Overlay -->
+    <div class="celebration-overlay" id="celebrationOverlay">
+        <div class="celebration-text">🎉 HAPPY BIRTHDAY! 🎉</div>
+        <div class="celebration-subtitle">Get ready for the most amazing day ever! ✨</div>
+    </div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <!-- CUSTOMIZE THIS: Change the title and subtitle here -->
+            <h1 class="main-title">Happy Birthday Nana! 🎂</h1>
+            <p class="subtitle">Another year of being absolutely incredible! 💖</p>
+        </div>
+
+        <!-- Profile Image -->
+        <div class="image-container">
+            <!-- CUSTOMIZE THIS: Replace the src with your girlfriend's photo -->
+            <img src="her.jpg" 
+                 alt="Birthday Girl" 
+                 class="profile-image">
+        </div>
+
+        <!-- Main Message -->
+        <div class="card">
+            <div class="message-section">
+                <h2 class="message-title">Today is all about Nana! 👑</h2>
+                <!-- CUSTOMIZE THIS: Write your personal message here -->
+                <p class="message-text">
+                    Hey amazing girl,
+                    Another year has passed, and you continue to bring so much joy, laughter, and love into this world and into my world!
+                    Your smile lights up every room, and your heart touches me deeply.
+                    I’m so grateful to celebrate your birthday for the first time.
+                    You deserve all the happiness, love, and magical moments this new year can bring! 💕
+                </p>
+            </div>
+        </div>
+
+        <!-- Interactive Section -->
+        <div class="card">
+            <div class="interactive-section">
+                <h2 class="message-title">Spread the Birthday Magic! ✨</h2>
+                <button class="love-button" onclick="createFirework(event)">Love ❤️</button>
+                <button class="love-button" onclick="showSurprise()">Surprise Me! 🎁</button>
+                <button class="love-button" onclick="playCustomSong()">Play Song 🎵</button>
+                <div class="heart-container">
+                    <span class="heart">💖</span>
+                    <span class="heart">💕</span>
+                    <span class="heart">💝</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wishes Section -->
+        <div class="card">
+            <div class="message-section">
+                <h2 class="message-title">My Wishes for You 🌟</h2>
+                <!-- CUSTOMIZE THIS: Add your personal wishes -->
+                <p class="message-text">
+                    May this new year bring you endless happiness and all the love your heart can hold.<br>
+                    May every day be filled with beautiful moments, sweet surprises, and dreams coming true.<br>
+                    May every good thing you’ve ever wished for become your reality. And may you never suffer or cry alone.<br>
+                    You deserve all the wonderful things life has to offer and so much more.<br>
+                    I will bring happiness to you. And I will love you more and more, every single day.<br>
+                    Here’s to another year of making sweet, sweet memories together. 🥂
+                </p>
+            </div>
+        </div>
+
+        <!-- Personal Message Section -->
+        <div class="card">
+            <div class="message-section">
+                <h2 class="message-title">From My Heart to Yours 💌</h2>
+                <!-- CUSTOMIZE THIS: Add your most personal message here -->
+                <p class="message-text">
+                   ငယ်ငယ်ကလေးပုစိသေးသေးလေးအရွယ်ထဲကနေ ခုဆို ၂၂နှစ်‌တောင်ရှိလာခဲ့ပါပြီ။ အများကြီးကြုံတွေခဲ့ရမှာပဲနော် hachi သိတာတွေရောမသိတာတွေရော။ 
+                   ကလေးဘဝက စက်ဘီးစီးတာလေးတူနေတဲ့ပုံလေးကိုတောင်အမှတ်ရသေးတယ်။  ငယ်ငယ်ထဲကချစ်ဖို့‌ကောင်းခဲ့တာပါ🥰 
+                   nanaရဲ့ခုချိန်ထိဘာတွေလုပ်ခဲ့လဲဆိုတာလေးရိုက်ထားတဲ့ရုပ်ရှင်ရှိရင်မဆိုးဘူးနော် ထိုင်ကြည့်မှာ။ 
+                   ဘယ်လိုပဲကောင်းတာဆိုးတာတွေပဲကြုံခဲ့ကြုံခဲ့ အခုထိ‌‌ ကောင်းကောင်းမွန်မွန်‌လေးကြီးပြင်းလာပြီး hachi နဲ့တွေ့ရပြီနော်🍀 
+                   nanaကိုမွေးဖွားပေးခဲ့ပြီး ပင်ပင်ပန်းပန်း ပျိုးထောင်ပေးခဲ့တဲ့ nanaရဲ့‌ မေမေကိုရော အများကြီးကျေးဇူးတင်ပါတယ်။ 
+                   အခု‌မွေး‌နေ့ကစပြီး ရှေ့မှာစောင့်ကြိုနေတဲ့ မွေးနေ့တွေတိုင်းမှာ အတူတူဖြတ်သန်းကြပါမယ်။ မွေးနေ့‌ကိတ်မုန့်တစ်လုံး🎂ကိုလဲဝယ်ပြီး နှစ်ယောက်သားကုန်အောင်ထိုင်စားချင်‌သေးတယ်‌🤣။ 
+                   ဝယ်တာထက်စာရင် အတူလုပ်တဲ့ကိတ်လေးဆိုပို‌ကောင်းမယ်‌နော်။  အဲ့လိုမျိုးပဲ ဘဝကြီးမှာ အတွေ့အကြုံတွေအများကြီးကို အတူတူကြုံတွေ့ချင်ပါသေးတယ်။ 
+                   ရှေ့ဆက်ရမဲ့အချိန်‌တွေမှာ nanaအကြောင်းတွေအကုန်သိနေ အမှတ်ရ နေတဲ့သူဖြစ်ချင်ပါတယ်။ hachi ကလဲ ကောင်းတာလေးတွေအများကြီးကို ကြိုးစားပြီးဖန်တီးပေးပါမယ်နော်✨ 
+                   မွေးနေ့မှာ ပျော်ရွှင်ရပါစေ။ နေ့ရက်တိုင်းမှာလဲပျော်ရွှင်ရပါစေ။ 
+                   ကြိုးစားသမျှအရာထင်ပါစေ။ ဒီက အသဲနုနု ထစ်ခနဲဆိုစိတ်ဓာတ်ကျပြီးငိုတဲ့ ကိုကိုရစ်လုံးလေးကို အမြဲတမ်းချစ်သွားနိုင်ပါစေ။ 
+                   ဘယ်လောက်ပဲ လူကြီးဖြစ်လာလာ အမြဲတမ်း ကိုလေးရဲ့ကလေးလေးပါပဲ💞  
+                   ဘာတွေပဲဖြစ်လာကြုံလာ အတူတူရှိကြပါမယ်။ မရှိနိုင်စရာအကြောင်းမရှိပါဘူးကွယ်။
+                   I feel so lucky to be part of your life and even luckier to celebrate you today. 
+                   Oh, wait… I just remembered you said I am your life. So I guess that makes me the luckiest, to be your life, Nana.<br>
+                   Happy Birthday, my love! 💖
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden audio element for custom song -->
+    <!-- CUSTOMIZE THIS: Add your song file here -->
+    <audio id="customSong" preload="auto">
+        <source src="./Happy Birthday.m4a" type="audio/mpeg">
+        <!-- Add your song file path above. Supported formats: MP3, OGG, WAV -->
+    </audio>
+
+    <script>
+        // CUSTOMIZE THESE MESSAGES: Add your own surprise messages
+        const surpriseMessages = [
+            "🌟 You're absolutely incredible and I'm so lucky to have you! 🌟",
+            "🎂 Hope your birthday is as sweet and amazing as you are! 🎂",
+            "🎈 Sending you all my love and the biggest hugs today! 🎈",
+            "💖 You make my world brighter every single day! 💖",
+            "🦋 Every moment with you is a gift I treasure! 🦋",
+            "🌙 You're my favorite person and my biggest blessing! 🌙",
+            "💖 I Love You 💖",
+        ];
+
+        // Initialize landing celebration
+        function initializeCelebration() {
+            // Create massive confetti explosion
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    createLandingConfetti();
+                }, i * 20);
+            }
+
+            // Create floating balloons
+            const balloonEmojis = ['🎈', '🎉', '🎊', '🎁', '🎂', '🌟', '💖', '🦋'];
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    createFloatingBalloon(balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)]);
+                }, i * 300);
+            }
+
+            // Create sparkle effects
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createSparkle();
+                }, i * 50);
+            }
+        }
+
+        // Create landing confetti
+        function createLandingConfetti() {
+            const colors = ['#ff6b9d', '#4ecdc4', '#45b7d1', '#ffd93d', '#6bcf7f', '#ff9a9e', '#a78bfa'];
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.top = '-20px';
+            confetti.style.borderRadius = Math.random() > 0.3 ? '50%' : '0';
+            confetti.style.width = (Math.random() * 8 + 6) + 'px';
+            confetti.style.height = confetti.style.width;
+            
+            document.body.appendChild(confetti);
+            
+            animateConfetti(confetti);
+        }
+
+        // Create floating balloons
+        function createFloatingBalloon(emoji) {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.textContent = emoji;
+            balloon.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            balloon.style.top = window.innerHeight + 'px';
+            balloon.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.body.appendChild(balloon);
+            
+            // Float up and remove
+            let position = window.innerHeight;
+            const floatUp = setInterval(() => {
+                position -= 2;
+                balloon.style.top = position + 'px';
+                
+                if (position < -100) {
+                    clearInterval(floatUp);
+                    if (balloon.parentElement) {
+                        document.body.removeChild(balloon);
+                    }
+                }
+            }, 50);
+        }
+
+        // Create sparkle effects
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.textContent = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '9999';
+            sparkle.style.animation = 'glow 1s ease-in-out';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                if (sparkle.parentElement) {
+                    document.body.removeChild(sparkle);
+                }
+            }, 1000);
+        }
+
+        // Initialize particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 60; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Improved firework effect
+        function createFirework(event) {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = event.clientX + 'px';
+            firework.style.top = event.clientY + 'px';
+            document.body.appendChild(firework);
+            
+            setTimeout(() => {
+                if (firework.parentElement) {
+                    document.body.removeChild(firework);
+                }
+            }, 1500);
+            
+            // Create multiple hearts and sparkles
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    createFloatingHeart(event.clientX, event.clientY);
+                }, i * 80);
+            }
+
+            // Create confetti burst
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createTargetedConfetti(event.clientX, event.clientY);
+                }, i * 30);
+            }
+        }
+
+        // Create targeted confetti from click point
+        function createTargetedConfetti(x, y) {
+            const colors = ['#ff6b9d', '#4ecdc4', '#45b7d1', '#ffd93d', '#6bcf7f'];
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = x + (Math.random() - 0.5) * 200 + 'px';
+            confetti.style.top = y + (Math.random() - 0.5) * 200 + 'px';
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            
+            document.body.appendChild(confetti);
+            animateConfetti(confetti);
+        }
+
+        // Animate confetti falling
+        function animateConfetti(confetti) {
+            let position = parseInt(confetti.style.top);
+            let horizontalPos = parseInt(confetti.style.left);
+            let rotation = 0;
+            const fallSpeed = Math.random() * 4 + 3;
+            const rotateSpeed = Math.random() * 15 + 10;
+            const drift = (Math.random() - 0.5) * 2;
+            
+            const fall = setInterval(() => {
+                position += fallSpeed;
+                horizontalPos += drift;
+                rotation += rotateSpeed;
+                confetti.style.top = position + 'px';
+                confetti.style.left = horizontalPos + 'px';
+                confetti.style.transform = `rotate(${rotation}deg)`;
+                
+                if (position > window.innerHeight + 50) {
+                    clearInterval(fall);
+                    if (confetti.parentElement) {
+                        document.body.removeChild(confetti);
+                    }
+                }
+            }, 16);
+        }
+
+        // Enhanced floating hearts
+        function createFloatingHeart(x, y) {
+            const hearts = ['💖', '💕', '💝', '💗', '💓', '❤️', '🧡', '💛'];
+            const heart = document.createElement('div');
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.position = 'fixed';
+            heart.style.left = x + (Math.random() - 0.5) * 150 + 'px';
+            heart.style.top = y + (Math.random() - 0.5) * 150 + 'px';
+            heart.style.fontSize = (Math.random() * 15 + 20) + 'px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1000';
+            heart.style.transition = 'all 3s ease-out';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.style.transform = `translateY(-${Math.random() * 200 + 100}px) rotate(${Math.random() * 360}deg)`;
+                heart.style.opacity = '0';
+            }, 100);
+            
+            setTimeout(() => {
+                if (heart.parentElement) {
+                    document.body.removeChild(heart);
+                }
+            }, 3000);
+        }
+
+        // Enhanced surprise function
+        function showSurprise() {
+            const surprise = surpriseMessages[Math.floor(Math.random() * surpriseMessages.length)];
+            
+            const surpriseDiv = document.createElement('div');
+            surpriseDiv.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+                    color: white;
+                    padding: 40px;
+                    border-radius: 25px;
+                    font-size: clamp(1.2rem, 4vw, 1.8rem);
+text-align: center;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                    z-index: 10001;
+                    max-width: 90%;
+                    animation: surprisePopup 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                    backdrop-filter: blur(20px);
+                ">
+                    ${surprise}
+                    <div style="margin-top: 20px;">
+                        <button onclick="this.parentElement.parentElement.remove()" style="
+                            background: rgba(255, 255, 255, 0.2);
+                            border: 1px solid rgba(255, 255, 255, 0.3);
+                            color: white;
+                            padding: 10px 25px;
+                            border-radius: 15px;
+                            cursor: pointer;
+                            font-size: 1rem;
+                            transition: all 0.3s ease;
+                        " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" 
+                           onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+                            Close 💖
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(surpriseDiv);
+            
+            // Create celebration effects around the surprise
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createFloatingHeart(window.innerWidth / 2, window.innerHeight / 2);
+                }, i * 100);
+            }
+            
+            // Create sparkle burst
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createSparkle();
+                }, i * 50);
+            }
+        }
+
+        // Play custom song function
+        function playCustomSong() {
+            const audio = document.getElementById('customSong');
+            
+            // Force load the audio if not already loaded
+            if (!audio.src) {
+                audio.load();
+            }
+            
+            // Check if we have any source elements
+            const sources = audio.querySelectorAll('source');
+            const hasSource = sources.length > 0;
+            
+            console.log('Audio element:', audio);
+            console.log('Audio src:', audio.src);
+            console.log('Audio currentSrc:', audio.currentSrc);
+            console.log('Sources found:', sources.length);
+            console.log('Audio readyState:', audio.readyState);
+            console.log('Audio networkState:', audio.networkState);
+            
+            if (hasSource || audio.src) {
+                if (audio.paused) {
+                    // Try to load first
+                    audio.load();
+                    
+                    // Small delay to allow loading
+                    setTimeout(() => {
+                        audio.play().then(() => {
+                            showMusicNotification('🎵 Playing our special song! 🎵');
+                        }).catch((error) => {
+                            console.log('Audio play error:', error);
+                            if (error.name === 'NotAllowedError') {
+                                showMusicNotification('🎵 Click anywhere first to enable audio! 🎵');
+                            } else if (error.name === 'NotSupportedError') {
+                                showMusicNotification('🎵 Audio file format not supported! 🎵');
+                            } else {
+                                showMusicNotification('🎵 Could not find a.mp3 file! Check file location! 🎵');
+                            }
+                        });
+                    }, 100);
+                } else {
+                    audio.pause();
+                    showMusicNotification('🎵 Music paused 🎵');
+                }
+            } else {
+                showMusicNotification('🎵 Make sure a.mp3 is in the same folder as this HTML file! 🎵');
+            }
+        }
+
+        // Show music notification
+        function showMusicNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 30px;
+                right: 30px;
+                background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+                color: white;
+                padding: 20px 30px;
+                border-radius: 15px;
+                font-size: 1.1rem;
+                z-index: 10002;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                animation: slideInRight 0.5s ease-out;
+                max-width: 300px;
+                text-align: center;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.5s ease-in forwards';
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        document.body.removeChild(notification);
+                    }
+                }, 500);
+            }, 3000);
+        }
+
+        // Add slide animations for notifications
+        const slideAnimations = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        
+        // Add the slide animations to the page
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = slideAnimations;
+        document.head.appendChild(styleSheet);
+
+        // Add random floating elements periodically
+        function addRandomFloatingElements() {
+            const emojis = ['🌟', '✨', '💫', '🎈', '🦋', '🌸', '💖', '🎊'];
+            
+            setInterval(() => {
+                if (Math.random() < 0.3) { // 30% chance every interval
+                    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                    createFloatingElement(emoji);
+                }
+            }, 3000);
+        }
+
+        // Create floating element
+        function createFloatingElement(emoji) {
+            const element = document.createElement('div');
+            element.textContent = emoji;
+            element.style.cssText = `
+                position: fixed;
+                font-size: ${Math.random() * 20 + 25}px;
+                left: ${Math.random() * window.innerWidth}px;
+                top: ${window.innerHeight + 50}px;
+                pointer-events: none;
+                z-index: 1;
+                animation: floatUp ${Math.random() * 3 + 4}s ease-out forwards;
+            `;
+            
+            document.body.appendChild(element);
+            
+            setTimeout(() => {
+                if (element.parentElement) {
+                    document.body.removeChild(element);
+                }
+            }, 7000);
+        }
+
+        // Add float up animation
+        const floatUpAnimation = `
+            @keyframes floatUp {
+                from {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateY(-${window.innerHeight + 200}px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        
+        const floatStyleSheet = document.createElement('style');
+        floatStyleSheet.textContent = floatUpAnimation;
+        document.head.appendChild(floatStyleSheet);
+
+        // Add click effects to the entire page
+        document.addEventListener('click', function(e) {
+            // Don't add effects if clicking on buttons or interactive elements
+            if (!e.target.classList.contains('love-button') && 
+                !e.target.tagName.toLowerCase() === 'button') {
+                
+                // Small sparkle effect on any click
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.textContent = '✨';
+                        sparkle.style.cssText = `
+                            position: fixed;
+                            left: ${e.clientX + (Math.random() - 0.5) * 50}px;
+                            top: ${e.clientY + (Math.random() - 0.5) * 50}px;
+                            font-size: ${Math.random() * 10 + 15}px;
+                            pointer-events: none;
+                            z-index: 1000;
+                            animation: sparkFade 1s ease-out forwards;
+                        `;
+                        document.body.appendChild(sparkle);
+                        
+                        setTimeout(() => {
+                            if (sparkle.parentElement) {
+                                document.body.removeChild(sparkle);
+                            }
+                        }, 1000);
+                    }, i * 100);
+                }
+            }
+        });
+
+        // Add spark fade animation
+        const sparkFadeAnimation = `
+            @keyframes sparkFade {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1.2) rotate(180deg);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: scale(0) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        
+        const sparkStyleSheet = document.createElement('style');
+        sparkStyleSheet.textContent = sparkFadeAnimation;
+        document.head.appendChild(sparkStyleSheet);
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start the landing celebration
+            initializeCelebration();
+            
+            // Create background particles
+            createParticles();
+            
+            // Start random floating elements
+            setTimeout(() => {
+                addRandomFloatingElements();
+            }, 6000); // Start after initial celebration
+        });
+
+        // Add hover effects to cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    // Create subtle sparkle effect on card hover
+                    for (let i = 0; i < 3; i++) {
+                        setTimeout(() => {
+                            const rect = card.getBoundingClientRect();
+                            const sparkle = document.createElement('div');
+                            sparkle.textContent = '✨';
+                            sparkle.style.cssText = `
+                                position: fixed;
+                                left: ${rect.left + Math.random() * rect.width}px;
+                                top: ${rect.top + Math.random() * rect.height}px;
+                                font-size: 12px;
+                                pointer-events: none;
+                                z-index: 999;
+                                animation: sparkFade 0.8s ease-out forwards;
+                            `;
+                            document.body.appendChild(sparkle);
+                            
+                            setTimeout(() => {
+                                if (sparkle.parentElement) {
+                                    document.body.removeChild(sparkle);
+                                }
+                            }, 800);
+                        }, i * 200);
+                    }
+                });
+            });
+        });
+
+        // Customize colors function (bonus feature)
+        function changeTheme(theme) {
+            const root = document.documentElement;
+            const themes = {
+                pink: {
+                    '--primary-color': '#ff69b4',
+                    '--secondary-color': '#ff1493',
+                    '--accent-color': '#ffc0cb',
+                    '--background-gradient': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fad0c4 100%)'
+                },
+                purple: {
+                    '--primary-color': '#8b5cf6',
+                    '--secondary-color': '#a78bfa',
+                    '--accent-color': '#c084fc',
+                    '--background-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)'
+                },
+                blue: {
+                    '--primary-color': '#06b6d4',
+                    '--secondary-color': '#0891b2',
+                    '--accent-color': '#67e8f9',
+                    '--background-gradient': 'linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #a29bfe 100%)'
+                },
+                golden: {
+                    '--primary-color': '#f59e0b',
+                    '--secondary-color': '#d97706',
+                    '--accent-color': '#fbbf24',
+                    '--background-gradient': 'linear-gradient(135deg, #fdcb6e 0%, #e17055 50%, #fd79a8 100%)'
+                }
+            };
+            
+            if (themes[theme]) {
+                Object.entries(themes[theme]).forEach(([property, value]) => {
+                    root.style.setProperty(property, value);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
